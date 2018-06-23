@@ -23,10 +23,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     APIManager.sharedInstance.getAllRepos(completionHandler: { (namesArray) in
       self.repoNames = namesArray
-      self.reposTableView.reloadData()
+      
+      DispatchQueue.main.async {
+        self.reposTableView.reloadData()
+      }
     })
   }
-
+  
   // MARK: - TableView
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if repoNames != nil {
@@ -50,14 +53,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     performSegue(withIdentifier: "showDetailsSegue", sender: selectedRow)
   }
   
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let vc = segue.destination as? RepoDetailsViewController {
-        vc.repoName = sender as? String
-      }
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let vc = segue.destination as? RepoDetailsViewController {
+      vc.repoName = sender as? String
     }
+  }
   
   // MARK: - Create Repo
   @IBOutlet weak var createNewRepo: UIButton!
   
 }
+
