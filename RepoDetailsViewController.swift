@@ -12,35 +12,32 @@ class RepoDetailsViewController: UIViewController {
   
   @IBOutlet weak var repoDetailsTextView: UITextView!
   var repoName: String?
+  var jsonString = ""
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-      APIManager.sharedInstance.getRepoByName(name: repoName!, completionHandler: { (repoDetailsDict) in
-        print(repoDetailsDict)
-        
-        var selectedArray = [Any](repoDetailsDict.values)
-        
-//        for index in 0..<selectedArray.count {
-//          repoDetailsTextView.text += selectedArray[index]
-//        }
-      })
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    APIManager.sharedInstance.getRepoByName(name: repoName!, completionHandler: { (repoDetailsDict) in
+      self.jsonString = repoDetailsDict.description
+      print(self.jsonString)
+    })
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(true)
+    
+    repoDetailsTextView.text = jsonString
+  }
+  
+  /*
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destinationViewController.
+   // Pass the selected object to the new view controller.
+   }
+   */
+  
 }
+
