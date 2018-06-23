@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
     if !(userNameTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)! {
       let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
       let mainViewController = storyBoard.instantiateViewController(withIdentifier: "mainViewController") as! MainViewController
-      self.present(mainViewController, animated: true, completion: nil)
+      self.show(mainViewController, sender: self)
     } else {
       errorMessage.isHidden = false
     }

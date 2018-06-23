@@ -183,6 +183,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kGv-sV-hk2"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4st-Uy-RI3"/>
                     <connections>
                         <outlet property="createNewRepo" destination="XS6-SR-yMd" id="jsg-43-otv"/>
                         <outlet property="createRepoButton" destination="XS6-SR-yMd" id="F9g-dX-l3t"/>
@@ -240,6 +241,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bgE-fW-8a4"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wDV-jt-TSl"/>
                     <connections>
                         <outlet property="repoDetailsTextView" destination="c0m-90-EdK" id="HqC-cf-xOR"/>
                     </connections>

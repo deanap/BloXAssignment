@@ -29,7 +29,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
     })
   }
-  
+
   // MARK: - TableView
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if repoNames != nil {
@@ -53,15 +53,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     performSegue(withIdentifier: "showDetailsSegue", sender: selectedRow)
   }
   
-  // MARK: - Navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let vc = segue.destination as? RepoDetailsViewController {
-      vc.repoName = sender as? String
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let vc = segue.destination as? RepoDetailsViewController {
+        vc.repoName = sender as? String
+      }
     }
-  }
   
   // MARK: - Create Repo
   @IBOutlet weak var createNewRepo: UIButton!
   
 }
-
